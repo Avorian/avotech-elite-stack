@@ -1,0 +1,49 @@
+---
+const devs = [
+  {
+    name: 'Steve Wareham',
+    role: 'Founder • Full Stack Dev',
+    img: '/images/steve.jpg',
+    quote: 'I build elite systems for people who want results.',
+  },
+  {
+    name: 'CJ Edenfield',
+    role: 'Frontend Specialist',
+    img: '/images/cj.jpg',
+    quote: 'If it doesn’t feel right, it ain’t right. UX is everything.',
+  },
+  {
+    name: 'Collin Lane',
+    role: 'Backend + Database Architect',
+    img: '/images/collin.jpg',
+    quote: 'My job? Make it fast, make it scale, make it bulletproof.',
+  },
+];
+---
+
+<section class="my-20">
+  <h2 class="text-3xl font-bold text-center mb-10 text-base-content">Meet the Dev Collective</h2>
+  <p class="text-center text-base-content/70 mb-8 max-w-xl mx-auto">
+    AvoTech isn’t just a brand — it’s a network of powerhouse developers building smarter together. No egos. Just results.
+  </p>
+
+  <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+    {devs.map((dev) => (
+      <div
+        class="dev-card p-6 rounded-xl border transition-all
+               bg-base-200 text-base-content border-base-300
+               hover:shadow-xl
+               data-[theme=matrix]:bg-[#0f0f0f] data-[theme=matrix]:text-[#33ff33] data-[theme=matrix]:border-[#33ff33]
+               data-[theme=cyberpunk]:bg-[#1a001f] data-[theme=cyberpunk]:text-[#ff00cc] data-[theme=cyberpunk]:border-[#ff00cc]
+               data-[theme=nes]:bg-[#1a1a1a] data-[theme=nes]:text-[#ffffff] data-[theme=nes]:border-[#ff3c3c]"
+      >
+        <div class="card-inner">
+          <img src={dev.img} alt={dev.name} class="w-24 h-24 rounded-full mb-4 border-4 border-base-300 mx-auto" />
+          <h3 class="text-xl font-semibold text-center">{dev.name}</h3>
+          <p class="text-sm text-center italic mb-2">{dev.role}</p>
+          <p class="text-sm text-center opacity-80">"{dev.quote}"</p>
+        </div>
+      </div>
+    ))}
+  </div>
+</section>

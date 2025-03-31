@@ -1,0 +1,44 @@
+---
+---
+
+// Theme dropdown UI (feel free to style this further)
+<div class="flex items-center gap-4 my-6">
+  <label for="themeSelect" class="label font-bold">Choose Theme:</label>
+  <select id="themeSelect" class="select select-bordered select-sm">
+    <option value="default">Default</option>
+    <option value="nes">NES</option>
+    <option value="matrix">Matrix</option>
+    <option value="cyberpunk">Cyberpunk</option>
+  </select>
+</div>
+
+<!-- Theme toggling logic -->
+<script is:global>
+  window.addEventListener("DOMContentLoaded", () => {
+    const select = document.getElementById("themeSelect");
+    const themeLink = document.getElementById("theme-stylesheet");
+    const saved = localStorage.getItem("selected-theme") || "default";
+
+    // Set initial dropdown and href
+    select.value = saved;
+    themeLink.href = `/themes/${saved}.css`;
+    document.documentElement.setAttribute("data-theme", saved);
+
+    select.addEventListener("change", (e) => {
+      const theme = e.target.value;
+
+      // Update stylesheet link
+      themeLink.href = `/themes/${theme}.css`;
+      localStorage.setItem("selected-theme", theme);
+
+      // 🔥 Set data-theme attribute for CSS matching
+      document.documentElement.setAttribute("data-theme", theme);
+
+      // 🔁 Force reflow (fixes theme blink)
+      document.documentElement.style.display = "none";
+      requestAnimationFrame(() => {
+        document.documentElement.style.display = "";
+      });
+    });
+  });
+</script>

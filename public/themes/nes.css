@@ -1,0 +1,285 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+:root[data-theme="nes"] {
+  --bg-color: #000000;
+  --text-color: #ffffff;
+  --card-text-color: #f8f8f8;
+  --accent-color: #ff3c3c;
+  --card-bg: #1a1a1a;
+  --border-color: #ffffff;
+  --button-bg: #ff3c3c;
+  --button-text: #ffffff;
+  --button-border: #ffffff;
+  --highlight-blue: #3ca4ff;
+  --success-green: #4aff65;
+  --hover-bg: #bde6ff;
+  --pixel-shadow: 4px 4px 0px #000000;
+  --font-family: 'Press Start 2P', cursive;
+}
+
+[data-theme="nes"] body {
+  background-color: var(--bg-color);
+  background-image:
+    linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  background-size: 24px 24px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  position: relative;
+  z-index: 0;
+}
+
+[data-theme="nes"] body::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: -10;
+  background-image:
+    linear-gradient(to right, rgba(60, 164, 255, 0.3) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(60, 164, 255, 0.3) 1px, transparent 1px);
+  background-size: 24px 24px;
+  animation: gridPulse 3s ease-in-out infinite;
+  opacity: 0;
+}
+
+@keyframes gridPulse {
+  0%, 100% { opacity: 0; }
+  50% { opacity: 1; }
+}
+
+.card,
+.dev-card,
+.pixel-border {
+  color: var(--card-text-color);
+  box-shadow: var(--pixel-shadow), 0 0 10px rgba(0, 0, 0, 0.25);
+  border-radius: 12px;
+  border: none;
+  position: relative;
+  z-index: 1;
+}
+
+.card {
+  background-color: var(--card-bg);
+  opacity: 0.95;
+  padding: 2rem;
+  margin: 1rem;
+  image-rendering: pixelated;
+  text-align: center;
+  min-height: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  inset: -12px;
+  border-width: 24px;
+  border-style: solid;
+  border-image: url('/images/pixel-frame.png') 24 fill repeat;
+  pointer-events: none;
+  z-index: -1;
+  border-image-slice: 24 fill;
+  border-image-width: 24px;
+  border-image-outset: 0;
+  border-image-repeat: stretch;
+  border-radius: 16px;
+}
+
+.card .card-inner {
+  border-radius: 12px;
+  padding: 1rem;
+}
+
+button {
+  background-color: var(--button-bg);
+  color: var(--button-text);
+  border: 3px solid var(--button-border);
+  font-family: var(--font-family);
+  padding: 0.75rem 1.25rem;
+  text-transform: uppercase;
+  cursor: pointer;
+  box-shadow: var(--pixel-shadow);
+  image-rendering: pixelated;
+  border-radius: 8px;
+}
+
+button:hover {
+  background-color: var(--hover-bg);
+  color: var(--button-border);
+}
+
+button:active {
+  transform: translate(2px, 2px);
+  box-shadow: none;
+}
+
+input, textarea {
+  font-family: var(--font-family);
+  border: 2px solid var(--border-color);
+  padding: 0.75rem 1rem;
+  background-color: var(--card-bg);
+  color: var(--text-color);
+  width: 85%;
+  max-width: 500px;
+  margin: 0 auto;
+  box-shadow: 2px 2px var(--border-color);
+  image-rendering: pixelated;
+  border-radius: 6px;
+}
+
+input:focus, textarea:focus {
+  border-color: var(--accent-color);
+  outline: none;
+}
+
+a {
+  color: var(--highlight-blue);
+  text-decoration: none;
+  font-weight: bold;
+}
+
+a:hover {
+  color: var(--accent-color);
+  text-shadow: 1px 1px var(--border-color);
+}
+
+.section-title {
+  color: var(--accent-color);
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  border-bottom: 3px double var(--border-color);
+  padding-bottom: 0.5rem;
+  text-transform: uppercase;
+}
+
+.card-title,
+.dev-card h3,
+.pixel-text,
+.tagline {
+  color: var(--card-text-color);
+  text-shadow: 1px 1px var(--border-color);
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+h1, h2, h3 {
+  color: var(--accent-color);
+  text-shadow: 1px 1px var(--border-color);
+  text-transform: uppercase;
+}
+
+hr {
+  border: 2px dashed var(--accent-color);
+  margin: 2rem 0;
+}
+
+/* Glowing Frame for Dev Cards */
+.dev-card {
+  position: relative;
+  padding: 1.5rem;
+  border-radius: 12px;
+  background-image: url('/images/nes-stage.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: var(--card-text-color);
+  box-shadow:
+    var(--pixel-shadow),
+    0 0 12px rgba(255, 60, 60, 0.5),
+    0 0 20px rgba(255, 60, 60, 0.3),
+    0 0 30px rgba(255, 60, 60, 0.2);
+  border: 3px solid var(--accent-color);
+  transition: all 0.3s ease-in-out;
+  backdrop-filter: brightness(1.1);
+  z-index: 1;
+  overflow: hidden;
+}
+
+.dev-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 12px;
+  box-shadow:
+    inset 0 0 0 2px var(--border-color),
+    0 0 8px var(--accent-color),
+    0 0 16px var(--accent-color);
+  pointer-events: none;
+  z-index: 2;
+}
+
+.dev-card img {
+  width: 6rem;
+  height: 6rem;
+  border-radius: 50%;
+  margin-bottom: 1rem;
+  box-shadow: var(--pixel-shadow);
+  border: 2px solid var(--border-color);
+  image-rendering: pixelated;
+  transition: all 0.3s ease-in-out;
+}
+
+.dev-card img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 10px var(--accent-color), 0 0 20px var(--accent-color);
+}
+
+.nes-bg {
+  background-image: repeating-linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0.05),
+    rgba(0, 0, 0, 0.05) 1px,
+    transparent 1px,
+    transparent 3px
+  );
+}
+
+/* Hero-specific */
+.discover-btn {
+  border: 2px solid var(--accent-color);
+  background-color: transparent;
+  color: var(--text-color);
+  font-family: var(--font-family);
+  box-shadow: 2px 2px 0 var(--text-color);
+  text-transform: uppercase;
+  transition: all 0.3s ease-in-out;
+}
+.discover-btn:hover {
+  background-color: var(--accent-color);
+  color: #fff;
+}
+
+@keyframes nes-blink {
+  0%, 100% { color: #000000; }
+  50% { color: #ff3c3c; }
+}
+
+.nes-blink {
+  animation: nes-blink 1s step-end infinite;
+  font-family: 'Press Start 2P', cursive;
+  text-shadow: 2px 2px 0 #fff, 4px 4px 0 #000;
+}
+
+@keyframes pulse-pop {
+  0%, 100% {
+    transform: scale(1);
+    text-shadow: 0 0 0px var(--accent-color);
+  }
+  50% {
+    transform: scale(1.1);
+    text-shadow: 0 0 8px var(--accent-color);
+  }
+}
+
+.tagline-different {
+  display: inline-block;
+  color: var(--accent-color);
+  animation: pulse-pop 1.5s ease-in-out infinite;
+}

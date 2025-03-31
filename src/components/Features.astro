@@ -1,0 +1,36 @@
+---
+const features = [
+  {
+    title: 'Lightning Fast Builds',
+    description: 'Astro and Tailwind combine to create performance-focused sites that load in milliseconds.',
+    icon: '⚡',
+  },
+  {
+    title: 'Modular Components',
+    description: 'Build once, reuse everywhere. Every section is theme-ready and responsive out of the box.',
+    icon: '🧩',
+  },
+  {
+    title: 'Dynamic Theming',
+    description: 'Switch vibes on the fly. From retro NES to cyberpunk glow — style is just a dropdown away.',
+    icon: '🎨',
+  },
+];
+---
+
+<section class="my-16">
+  <h2 class="section-title text-center mb-8">What We Bring to the Table</h2>
+  <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+    {features.map((feature) => (
+      <div class="card text-center 
+                 data-[theme=matrix]:bg-[#0f0f0f] data-[theme=matrix]:text-[#33ff33] data-[theme=matrix]:border-[#33ff33]
+                 data-[theme=cyberpunk]:bg-[#1a001f] data-[theme=cyberpunk]:text-[#ff00cc] data-[theme=cyberpunk]:border-[#ff00cc]
+                 data-[theme=nes]:bg-[#fef4d1] data-[theme=nes]:text-[#3b2a1a] data-[theme=nes]:border-[#ff3c3c]">
+        <div class="text-4xl mb-4">{feature.icon}</div>
+        <h3 class="card-title mb-2">{feature.title}</h3>
+        <p class="text-sm pixel-text">{feature.description}</p>
+      </div>
+    ))}
+  </div>
+</section>
+

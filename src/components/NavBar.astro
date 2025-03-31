@@ -1,0 +1,16 @@
+---
+const links = [
+  { name: 'Home', href: '/' },
+  { name: 'Features', href: '#features' },
+  { name: 'Projects', href: '#projects' },
+  { name: 'Contact', href: '#contact' }
+];
+---
+<nav class="bg-base-100 text-base-content p-4 flex justify-between items-center shadow-md">
+  <h1 class="text-xl font-bold">AvoTech</h1>
+  <ul class="flex gap-4">
+    {links.map(link => (
+      <li><a href={link.href} class="hover:text-primary transition">{link.name}</a></li>
+    ))}
+  </ul>
+</nav>

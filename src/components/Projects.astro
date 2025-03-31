@@ -1,0 +1,44 @@
+---
+const projects = [
+  {
+    title: 'Simon Donaghy Music',
+    description: 'A custom site for a live pianist, featuring rich media and booking tools.',
+    link: 'https://simondonaghy.com',
+  },
+  {
+    title: 'AvoTech Multiverse',
+    description: 'The flagship site for our dev collective, built with Astro + Tailwind.',
+    link: 'https://avorian.com',
+  },
+  {
+    title: 'Dev Collective Portal',
+    description: 'Custom admin dashboard for local tech freelancers. Private repo. Ask for demo.',
+    link: '#',
+  }
+];
+---
+
+
+<section class="my-20">
+  <h2 class="text-3xl font-bold text-center mb-10 text-base-content">Recent Projects</h2>
+
+  <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+    {projects.map((project) => (
+      <a
+        href={project.link}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="block rounded-xl overflow-hidden p-6 text-center border-2 border-[#ff3c3c]
+               bg-black bg-center bg-no-repeat shadow-xl transition-transform transform hover:scale-105"
+        style="
+          background-image: url('/images/tetris-frame.png');
+          background-size: 100% 100%;
+          min-height: 24rem; /* 2.5x taller than typical ~9rem cards */
+        "
+      >
+        <h3 class="text-xl font-bold text-[#ff3c3c] mb-2">{project.title}</h3>
+        <p class="text-sm text-white">{project.description}</p>
+      </a>
+    ))}
+  </div>
+</section>
