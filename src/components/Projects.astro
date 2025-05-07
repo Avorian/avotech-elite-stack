@@ -1,4 +1,9 @@
 ---
+const { theme } = Astro.props;
+const isMatrix = theme === 'matrix';
+const isCyberpunk = theme === 'cyberpunk';
+const isNES = theme === 'nes';
+
 const projects = [
   {
     title: 'Simon Donaghy Music',
@@ -18,27 +23,52 @@ const projects = [
 ];
 ---
 
+<section
+  class={`projects-section relative z-40 my-20 px-4 sm:px-6 lg:px-8
+    ${isMatrix ? 'text-green-300' : ''}
+    ${isCyberpunk ? 'text-pink-300' : ''}
+    ${isNES ? 'text-white' : ''}
+  `}
+>
+  <!-- Title -->
+  <h2
+    class={`projects-title text-3xl sm:text-4xl font-bold text-center mb-12 tracking-wide
+      ${isMatrix ? 'font-[Orbitron] glitch-text' : ''}
+      ${isCyberpunk ? 'neon-glow text-pink-300' : ''}
+      ${isNES ? 'font-["Press_Start_2P"]' : ''}
+    `}
+  >
+    Recent Projects
+  </h2>
 
-<section class="my-20">
-  <h2 class="text-3xl font-bold text-center mb-10 text-base-content">Recent Projects</h2>
-
-  <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-    {projects.map((project) => (
-      <a
-        href={project.link}
-        target="_blank"
-        rel="noopener noreferrer"
-        class="block rounded-xl overflow-hidden p-6 text-center border-2 border-[#ff3c3c]
-               bg-black bg-center bg-no-repeat shadow-xl transition-transform transform hover:scale-105"
-        style="
-          background-image: url('/images/tetris-frame.png');
-          background-size: 100% 100%;
-          min-height: 24rem; /* 2.5x taller than typical ~9rem cards */
-        "
-      >
-        <h3 class="text-xl font-bold text-[#ff3c3c] mb-2">{project.title}</h3>
-        <p class="text-sm text-white">{project.description}</p>
-      </a>
-    ))}
+  <!-- Grid Wrapper with Pane Background -->
+  <div
+    class={`projects-grid-wrapper p-6 rounded-lg shadow-lg border max-w-7xl mx-auto
+      ${isMatrix ? 'bg-black/60 border-green-500 backdrop-blur-sm shadow-[0_0_10px_#00ff00] matrix-grid' : ''}
+      ${isCyberpunk ? 'bg-[#1a002d]/90 border-pink-500 backdrop-blur-md' : ''}
+      ${isNES ? 'bg-black border-gray-400' : ''}
+    `}
+  >
+    <div class="grid gap-8 projects-grid sm:grid-cols-2 lg:grid-cols-3">
+      {projects.map((project) => (
+        <a
+          href={project.link}
+          target="_blank"
+          rel="noopener noreferrer"
+          class={`project-card group p-4 rounded-lg border transition-transform hover:scale-[1.03] cursor-pointer
+            ${isMatrix ? 'border-green-600 hover:shadow-[0_0_10px_#00ff00]' : ''}
+            ${isCyberpunk ? 'border-pink-600 hover:shadow-[0_0_12px_#ff00aa]' : ''}
+            ${isNES ? 'border-gray-400 bg-gray-900 hover:bg-red-700 hover:text-white' : ''}
+          `}
+        >
+          <h3 class="mb-2 text-xl font-bold project-title group-hover:underline underline-offset-4">
+            {project.title}
+          </h3>
+          <p class="text-sm leading-relaxed project-description opacity-90">
+            {project.description}
+          </p>
+        </a>
+      ))}
+    </div>
   </div>
 </section>

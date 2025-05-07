@@ -283,3 +283,351 @@ hr {
   color: var(--accent-color);
   animation: pulse-pop 1.5s ease-in-out infinite;
 }
+[data-theme='nes'] .hero-section {
+  background-color: #1a1a1a;
+  color: #ffffff;
+}
+
+[data-theme='nes'] .hero-banner-img {
+  max-width: 280px;
+  transform: rotate(-8deg);
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.6));
+}
+
+[data-theme='nes'] .hero-title {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 6rem;
+  color: white;
+  animation: blink 1s step-end infinite;
+  letter-spacing: 0.2rem;
+}
+
+@keyframes blink {
+  50% { opacity: 0.6; }
+}
+
+[data-theme='nes'] .hero-tagline {
+  font-size: 1.875rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  margin-top: -0.75rem;
+}
+
+[data-theme='nes'] .tagline-different {
+  color: #ff3c3c;
+}
+
+[data-theme='nes'] .hero-cta {
+  margin-top: 0.5rem;
+  padding: 1rem 2.5rem;
+  font-size: 1.125rem;
+  background-color: #ccc;
+  color: black;
+  border: 4px solid #999;
+  font-weight: bold;
+  border-radius: 0.5rem;
+  transition: all 0.3s ease-in-out;
+}
+
+[data-theme='nes'] .hero-cta:hover {
+  background-color: #ff3c3c;
+  color: white;
+  box-shadow: 0 0 12px rgba(255, 60, 60, 0.5);
+}
+
+[data-theme='nes'] .under-construction-banner {
+  position: fixed;
+  top: 0.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #ff3c3c;
+  color: white;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.75rem;
+  padding: 0.25rem 1rem;
+  border-radius: 0.25rem;
+  animation: pulse 1.5s infinite;
+  z-index: 999;
+}
+
+[data-theme='nes'] .hero-audio-ui {
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+  z-index: 40;
+  background-color: rgba(0, 0, 0, 0.8);
+  padding: 0.75rem;
+  border: 1px solid #ff3c3c;
+  border-radius: 0.5rem;
+  width: 15rem;
+}
+
+[data-theme='nes'] .track-buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.25rem;
+  margin-bottom: 0.5rem;
+}
+
+[data-theme='nes'] .track-btn {
+  background-color: #ff3c3c;
+  color: white;
+  font-size: 0.75rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+  transition: background-color 0.2s;
+}
+
+[data-theme='nes'] .track-btn:hover {
+  background-color: #ff5c5c;
+}
+
+[data-theme='nes'] .now-playing-info {
+  color: white;
+  font-family: monospace;
+  font-size: 0.75rem;
+  text-align: right;
+  line-height: 1.1;
+}
+debug.classList.add("hidden");
+
+[data-theme='nes'] .support-artist-link {
+  color: #00bfff;
+}
+
+[data-theme='nes'] .support-artist-link:hover {
+  color: #66ccff;
+}
+
+[data-theme='nes'] .cassette-img {
+  width: 3rem;
+  height: 3rem;
+  margin-top: 0.5rem;
+}
+
+[data-theme='nes'] .mute-toggle {
+  margin-top: 0.5rem;
+  background-color: #b22222;
+  color: white;
+  font-weight: bold;
+  [data-theme='nes'] .projects-section {
+    background-color: #1a1a1a;
+    color: #ffffff;
+  }
+  
+  [data-theme='nes'] .projects-title {
+    font-family: 'Press Start 2P', monospace;
+    color: #ff3c3c;
+    text-shadow: 0 0 3px #ff3c3c;
+  }
+  
+  [data-theme='nes'] .project-card {
+    background-color: black;
+    background-repeat: no-repeat;
+    background-position: center;
+    border: 2px solid #ff3c3c;
+    border-radius: 1rem;
+    padding: 2.5rem 1.5rem;
+    text-align: center;
+    color: white;
+    text-decoration: none;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    min-height: 24rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  
+  [data-theme='nes'] .project-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 15px #ff3c3c;
+  }
+  
+  [data-theme='nes'] .project-title {
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: #ff3c3c;
+    margin-bottom: 0.5rem;
+  }
+  
+  [data-theme='nes'] .project-description {
+    font-size: 0.875rem;
+    opacity: 0.9;
+  }
+  [data-theme='nes'] .project-card {
+    background-image: url('/images/tetris-frame.png');
+    background-size: 100% 100%;
+  }
+  .glitch-text {
+    position: relative;
+    display: inline-block;
+  }
+  .glitch-text::before,
+  .glitch-text::after {
+    content: attr(data-text);
+    position: absolute;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    color: #0f0;
+    clip: rect(0, 900px, 0, 0);
+  }
+  .glitch-text::before {
+    animation: glitchTop 2s infinite linear alternate-reverse;
+  }
+  .glitch-text::after {
+    animation: glitchBottom 1.5s infinite linear alternate-reverse;
+  }
+  @keyframes glitchTop {
+    0%, 20% { clip: rect(0, 9999px, 0, 0); }
+    5%      { clip: rect(0, 9999px, 15px, 0); }
+    15%     { clip: rect(5px, 9999px, 20px, 0); }
+  }
+  @keyframes glitchBottom {
+    0%, 20% { clip: rect(0, 9999px, 0, 0); }
+    5%      { clip: rect(20px, 9999px, 25px, 0); }
+    15%     { clip: rect(25px, 9999px, 40px, 0); }
+  }
+  
+  @keyframes bounce-slow {
+    0%   { transform: translateY(0); }
+    100% { transform: translateY(-6px); }
+  }
+  .animate-bounce-slow {
+    animation: bounce-slow 2.5s infinite alternate;
+  }
+  /* NES: Pixelburst explosion */
+@keyframes pixelburst {
+  0% {
+    background-position: center;
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.05);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.3);
+  }
+}
+
+.animate-pixelburst {
+  background-image: url('/images/nes-pixelburst.gif'); /* Create/upload a rad burst graphic */
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  animation: pixelburst 3s ease-out infinite;
+}
+
+/* NES CTA pixel flicker */
+.pulse-border {
+  animation: nes-pulse 1.5s infinite;
+}
+
+@keyframes nes-pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(255, 0, 0, 0.6);
+  }
+  50% {
+    box-shadow: 0 0 0 4px rgba(255, 0, 0, 0.2);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(255, 0, 0, 0.6);
+  }
+}
+@keyframes fire-text-glow {
+  0%, 100% {
+    text-shadow:
+      0 0 4px #ff0000,
+      0 0 6px #ff6600;
+  }
+  50% {
+    text-shadow:
+      0 0 6px #ffff00,
+      0 0 10px #ff0000;
+  }
+}
+
+.fire-text {
+  animation: fire-text-glow 2s infinite ease-in-out;
+}
+
+/* Retro console jitter */
+@keyframes nes-jitter {
+  0% { transform: translate(0, 0); }
+  33% { transform: translate(-1px, 1px); }
+  66% { transform: translate(1px, -1px); }
+  100% { transform: translate(0, 0); }
+}
+
+.pulse-border {
+  animation: nes-jitter 0.4s infinite;
+}
+.nes-bg {
+  background-color: #fefefe;
+}
+
+.animate-pixelburst {
+  background-image: url('/images/nes-pixelburst.gif'); /* Add this asset or sub with one you have */
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  animation: pixelburst 3s ease-out infinite;
+}
+
+@keyframes pixelburst {
+  0% { background-position: center; opacity: 0; transform: scale(0.8); }
+  50% { opacity: 0.8; transform: scale(1.05); }
+  100% { opacity: 0; transform: scale(1.3); }
+}
+
+.fire-text {
+  text-shadow: 2px 2px #ff0000, 4px 4px #ff6600;
+  animation: fire-text-glow 2s infinite ease-in-out;
+}
+
+@keyframes fire-text-glow {
+  0%, 100% { text-shadow: 0 0 4px #ff0000, 0 0 6px #ff6600; }
+  50% { text-shadow: 0 0 6px #ffff00, 0 0 10px #ff0000; }
+}
+@keyframes nesGlitchPop {
+  0%, 100% {
+    transform: scale(1);
+    color: white;
+    text-shadow: none;
+  }
+  50% {
+    transform: scale(1.1) rotate(-1deg);
+    color: #ff6f61;
+    text-shadow:
+      1px 1px 0 #000,
+      -1px -1px 0 #000,
+      2px 2px 4px red;
+  }
+}
+
+.nes-different-animate {
+  display: inline-block;
+  animation: nesGlitchPop 2s infinite ease-in-out;
+  font-family: "Press Start 2P", monospace;
+  letter-spacing: 1px;
+}
+.pulse-border {
+  animation: nes-jitter 0.4s infinite;
+}
+
+@keyframes nes-jitter {
+  0% { transform: translate(0, 0); }
+  33% { transform: translate(-1px, 1px); }
+  66% { transform: translate(1px, -1px); }
+  100% { transform: translate(0, 0); }
+}
+/* Force-hide all non-NES theme elements */
+[data-theme='nes'] .matrix-only,
+[data-theme='nes'] .cyberpunk-only {
+  display: none !important;
+}
+

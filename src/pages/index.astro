@@ -1,20 +1,24 @@
 ---
+const { theme: propTheme } = Astro.props;
+const isMatrix = propTheme === 'matrix';
+const isNES = propTheme === 'nes';
+const isCyberpunk = propTheme === 'cyberpunk';
 import Layout from '../layouts/Layout.astro'
-import Hero from '../components/Hero.astro'
-import Features from '../components/Features.astro'
+import Hero from '../components/HeroSection/Hero.astro'
+import Features from '../components/features/Features.astro'
 import DevCollective from '../components/DevCollective.astro'
 import Projects from '../components/Projects.astro'
-import Preview from '../components/Preview.astro'
-import ThemeToggle from '../components/ThemeToggle.astro'
 import Contact from '../components/Contact.astro'
+const theme = Astro.cookies.get("theme")?.value || "nes";
+---
+
+
 ---
 
 <Layout>
-  <Hero />
+  <Hero theme={theme} />
   <DevCollective />
   <Features />
   <Projects />
-  <Preview />
-  <ThemeToggle />
   <Contact />
 </Layout>

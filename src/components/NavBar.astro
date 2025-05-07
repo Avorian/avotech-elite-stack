@@ -1,4 +1,6 @@
 ---
+const { theme } = Astro.props;
+
 const links = [
   { name: 'Home', href: '/' },
   { name: 'Features', href: '#features' },
@@ -6,11 +8,36 @@ const links = [
   { name: 'Contact', href: '#contact' }
 ];
 ---
-<nav class="bg-base-100 text-base-content p-4 flex justify-between items-center shadow-md">
-  <h1 class="text-xl font-bold">AvoTech</h1>
-  <ul class="flex gap-4">
+
+<nav class="nav-wrapper p-4 flex justify-between items-center shadow-md
+  ${theme === 'matrix' ? 'bg-black text-green-400 border-b border-green-700' : ''}
+  ${theme === 'cyberpunk' ? 'bg-[#1a002d] text-pink-400 border-b border-pink-600' : ''}
+  ${theme === 'nes' ? 'bg-yellow-200 text-black border-b-2 border-black' : ''}
+">
+  <h1 class="site-title text-xl font-bold
+    ${theme === 'matrix' ? 'text-green-400' : ''}
+    ${theme === 'cyberpunk' ? 'text-pink-400' : ''}
+    ${theme === 'nes' ? 'font-[\'Press_Start_2P\'] text-black text-sm' : ''}
+  ">
+    AvoTech
+  </h1>
+
+  <ul class="nav-links flex gap-4">
     {links.map(link => (
-      <li><a href={link.href} class="hover:text-primary transition">{link.name}</a></li>
+      <li><a href={link.href} class="nav-link transition hover:text-accent">{link.name}</a></li>
     ))}
   </ul>
+
+  <!-- 🔁 Theme Switcher Buttons -->
+  <div class="theme-switcher flex gap-2 ml-6">
+    <button onclick="switchTheme('nes')" class="px-2 py-1 text-xs border border-gray-400 rounded hover:bg-gray-100 transition ${theme === 'nes' ? 'bg-white text-black font-bold' : ''}">
+      🎮 NES
+    </button>
+    <button onclick="switchTheme('matrix')" class="px-2 py-1 text-xs border border-green-600 rounded hover:bg-green-900 transition ${theme === 'matrix' ? 'bg-green-800 text-green-200 font-bold' : 'text-green-400 bg-black'}">
+      💻 Matrix
+    </button>
+    <button onclick="switchTheme('cyberpunk')" class="px-2 py-1 text-xs border border-pink-600 rounded hover:bg-pink-900 transition ${theme === 'cyberpunk' ? 'bg-pink-700 text-pink-200 font-bold' : 'text-pink-400 bg-black'}">
+      🧪 Cyberpunk
+    </button>
+  </div>
 </nav>

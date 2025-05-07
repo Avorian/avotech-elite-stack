@@ -1,22 +1,93 @@
 ---
-// Contact.astro
+const { theme } = Astro.props;
+const isMatrix = theme === 'matrix';
+const isCyberpunk = theme === 'cyberpunk';
+const isNES = theme === 'nes';
 ---
 
-<section id="contact" class="py-16 px-6 bg-base-200 text-base-content">
-  <h3 class="text-3xl font-semibold text-center mb-8">Contact Us</h3>
-  <form class="max-w-xl mx-auto space-y-4">
-    <div class="card p-6 bg-base-200 text-base-content border-base-300">
-      <input type="text" placeholder="Name" class="input input-bordered w-11/12 mx-auto" />
-    </div>
-    <div class="card p-6 bg-base-200 text-base-content border-base-300">
-      <input type="email" placeholder="Email" class="input input-bordered w-11/12 mx-auto" />
-    </div>
-    <div class="card p-6 bg-base-200 text-base-content border-base-300">
-      <textarea placeholder="Message" class="textarea textarea-bordered w-11/12 mx-auto"></textarea>
-    </div>
-    <button type="submit" class="btn btn-primary w-11/12 mx-auto bg-button-bg text-button-text border-button-border">
-      Send
+<section
+  id="contact"
+  class={`contact-section relative z-40 py-20 px-6
+    ${isMatrix ? 'text-green-300' : ''}
+    ${isCyberpunk ? 'text-pink-300' : ''}
+    ${isNES ? 'text-white' : ''}
+  `}
+>
+  <!-- Heading -->
+  <h3
+    class={`contact-title text-3xl sm:text-4xl font-bold text-center mb-6 tracking-wide
+      ${isMatrix ? 'font-[Orbitron] glitch-text' : ''}
+      ${isCyberpunk ? 'neon-glow text-pink-300' : ''}
+      ${isNES ? 'font-["Press_Start_2P"]' : ''}
+    `}
+  >
+    Get In Touch
+  </h3>
+
+  <!-- Subtext -->
+  <p
+    class={`contact-subtitle text-center text-sm sm:text-base mb-10 opacity-80 max-w-xl mx-auto leading-relaxed
+      ${isMatrix ? 'text-green-200 font-mono' : ''}
+      ${isCyberpunk ? 'text-pink-100' : ''}
+      ${isNES ? 'text-white/80' : ''}
+    `}
+  >
+    Have a project idea or just want to say hi? Fill out the form below or email us directly.
+  </p>
+
+  <!-- Contact Form Pane -->
+  <form
+    class={`contact-form max-w-2xl mx-auto grid gap-6 p-6 rounded-lg shadow-lg border
+      ${isMatrix ? 'bg-black/60 border-green-500 backdrop-blur-sm shadow-[0_0_10px_#00ff00] matrix-grid' : ''}
+      ${isCyberpunk ? 'bg-[#1a002d]/80 border-pink-500 backdrop-blur-md' : ''}
+      ${isNES ? 'bg-black border-gray-400' : ''}
+    `}
+  >
+    <input
+      type="text"
+      placeholder="Name"
+      class="input input-bordered w-full text-base px-4 py-2 rounded bg-black/70 border border-gray-600 focus:outline-none focus:ring-2 focus:ring-accent"
+      required
+    />
+
+    <input
+      type="email"
+      placeholder="Email"
+      class="input input-bordered w-full text-base px-4 py-2 rounded bg-black/70 border border-gray-600 focus:outline-none focus:ring-2 focus:ring-accent"
+      required
+    />
+
+    <textarea
+      placeholder="Your Message"
+      rows="6"
+      class="textarea textarea-bordered w-full resize-none text-base px-4 py-3 rounded bg-black/70 border border-gray-600 focus:outline-none focus:ring-2 focus:ring-accent"
+      required
+    ></textarea>
+
+    <button
+      type="submit"
+      class={`contact-submit btn font-bold tracking-wide py-3 px-6 rounded shadow-md transition hover:scale-105
+        ${isMatrix ? 'bg-green-700 text-black hover:bg-green-600' : ''}
+        ${isCyberpunk ? 'bg-pink-600 text-white hover:bg-pink-700' : ''}
+        ${isNES ? 'bg-red-600 text-white hover:bg-red-700 font-["Press_Start_2P"] text-xs' : ''}
+      `}
+    >
+      ✉️ Send Message
     </button>
   </form>
-  <p class="text-center mt-4">You can also reach us via email: <a href="mailto:avo@avorian.com" class="text-accent-color">avo@avorian.com</a></p>
+
+  <!-- Fallback Email -->
+  <p class={`contact-footer text-center mt-8 text-sm opacity-70`}>
+    Or drop us a line at
+    <a
+      href="mailto:avo@avorian.com"
+      class={`contact-email underline hover:text-accent transition
+        ${isMatrix ? 'text-green-400' : ''}
+        ${isCyberpunk ? 'text-pink-400' : ''}
+        ${isNES ? 'text-white' : ''}
+      `}
+    >
+      avo@avorian.com
+    </a>
+  </p>
 </section>

@@ -1,43 +1,30 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-/* ✅ Keep this note to avoid accidental theme import */
- /* Only load base global styles. Do NOT @import the themes here. 
-    Those will be loaded dynamically in <link id="theme-stylesheet"> */
-
-/* 🌐 Global fallback using CSS vars (updated by theme-specific CSS like nes.css) */
-body {
-  background-color: var(--bg-color);
-  color: var(--text-color);
-  font-family: var(--font-family, sans-serif); /* ✅ fallback for uninitialized theme */
+/* === FINAL GHOSTBUSTER OVERRIDE 2.0 === */
+[data-theme='matrix'] .nes-only,
+[data-theme='matrix'] .cyberpunk-only {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  z-index: -1 !important;
+  position: absolute !important; /* force removal from flow */
 }
 
-.button {
-  background-color: var(--accent-color);
+[data-theme='nes'] .matrix-only,
+[data-theme='nes'] .cyberpunk-only {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  z-index: -1 !important;
+  position: absolute !important;
 }
 
-/* ✅ Optional Debugging Aids (can be toggled off in prod) */
-body::before {
-  content: '🎯 Theme Loaded';
-  position: absolute;
-  top: 0;
-  left: 0;
-  background: var(--accent-color);
-  color: var(--bg-color);
-  padding: 4px 8px;
-  font-size: 12px;
-  z-index: 9999;
-}
-
-.theme-debug {
-  position: fixed;
-  top: 0;
-  left: 0;
-  background: var(--accent-color);
-  color: var(--bg-color);
-  padding: 4px 8px;
-  font-size: 12px;
-  z-index: 9999;
-  pointer-events: none;
+[data-theme='cyberpunk'] .matrix-only,
+[data-theme='cyberpunk'] .nes-only {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  z-index: -1 !important;
+  position: absolute !important;
 }

@@ -2,19 +2,28 @@
 import NavBar from "../components/NavBar.astro";
 import Footer from "../components/Footer.astro";
 import ThemeSafeList from "../components/ThemeSafeList.astro";
+import MatrixConsole from "../components/MatrixConsole.astro";
+import HeaderLayout from "../components/HeaderLayout.astro";
 import "../styles/global.css";
----
 
-<html lang="en" data-theme="nes">
+const theme = Astro.props.theme || Astro.cookies.get("theme")?.value || "nes";
+const isMatrix = theme === 'matrix';
+---
+<html lang="en" data-theme={theme}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>AvoTech Elite Stack</title>
 
-    <!-- NES theme will load by default unless switched dynamically -->
-    <link id="theme-stylesheet" rel="stylesheet" href="/themes/nes.css" />
+    <!-- Theme stylesheet -->
+    <link
+      id="theme-stylesheet"
+      rel="stylesheet"
+      href={`/themes/${theme}.css`}
+      data-theme-style={theme}
+    />
 
-    <!-- Font Imports -->
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -22,27 +31,32 @@ import "../styles/global.css";
       rel="stylesheet"
     />
 
-    <!-- Theme Persistence & Meta -->
-    <ThemeSafeList />
+    <!-- Meta -->
     <meta name="description" content="AvoTech Elite Stack – a blazing fast, multi-theme portfolio and business tech site." />
     <meta name="theme-color" content="#ff0000" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <slot name="main" />
+
+    <ThemeSafeList />
   </head>
 
-  <body class="text-base-content">
-    <NavBar />
-    <main class="min-h-screen px-4">
-      <slot />
-    </main>
-    <Footer />
+  <canvas
+  id="matrix-canvas"
+  class="fixed top-0 left-0 w-screen h-screen opacity-80 mix-blend-screen pointer-events-none z-[-10]"
+></canvas>
 
-    <!-- Theme Preference Loader -->
-    <script>
-      const savedTheme = localStorage.getItem("theme") || "nes";
-      document.documentElement.setAttribute("data-theme", savedTheme);
-    </script>
+    <NavBar theme={theme} />
 
-    <!-- Optional Theme Debug Tag -->
-    <div class="theme-debug">🎯 Theme Loaded</div>
+    <div class="relative z-0">
+      <HeaderLayout theme={theme} />
+      <main class="min-h-screen px-4 py-8 main-layout">
+        <slot />
+      </main>
+      <Footer theme={theme} />
+      <MatrixConsole />
+    </div>
+
+    <!-- JS Theme Switching Logic -->
+    <script type="module" src="/scripts/theme-switch-core.js"></script>
   </body>
 </html>

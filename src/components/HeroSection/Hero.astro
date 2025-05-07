@@ -1,0 +1,38 @@
+---
+// 🔧 Hero.astro – Theme-aware hero controller component
+// 🎯 Purpose: Dynamically render themed Hero based on props
+const { theme } = Astro.props;
+
+// ⛓️ Import atomic Hero units
+import HeroMatrix from './HeroMatrix.astro';
+import HeroTitle from './HeroTitle.astro';
+import HeroNote from './HeroNote.astro';
+import HeroCTA from './HeroCTA.astro';
+import HeroAudioUI from './HeroAudioUI.astro';
+
+// 🧠 Fallback or dynamic loader for more themes in future
+const isMatrix = theme === 'matrix';
+const isCyberpunk = theme === 'cyberpunk';
+const isNES = theme === 'nes';
+---
+{isMatrix && <HeroMatrix title="INITIATE AVO LINK" subtitle="Elevate Your Digital Presence" />}
+{isCyberpunk && (
+  <section class="hero-section text-center text-pink-300 py-24">
+    <div class="max-w-3xl mx-auto">
+      <HeroTitle theme={theme} />
+      <HeroNote theme={theme} />
+      <HeroCTA theme={theme} />
+      <HeroAudioUI theme={theme} />
+    </div>
+  </section>
+)}
+{isNES && (
+  <section class="hero-section text-center text-white py-24 nes-only">
+    <div class="max-w-3xl mx-auto">
+      <HeroTitle theme={theme} />
+      <HeroNote theme={theme} />
+      <HeroCTA theme={theme} />
+      <HeroAudioUI theme={theme} />
+    </div>
+  </section>
+)}

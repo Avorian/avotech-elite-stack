@@ -1,0 +1,40 @@
+---
+const theme = Astro.cookies.get("theme")?.value || "nes";
+const isMatrix = theme === 'matrix';
+const isCyberpunk = theme === 'cyberpunk';
+const isNES = theme === 'nes';
+---
+
+<header class={`header-wrapper w-full px-6 py-6 flex flex-col sm:flex-row sm:items-center sm:justify-between relative
+  ${isMatrix ? 'matrix-block' : ''}
+  ${isCyberpunk ? 'bg-[#1a002d]/80 border border-pink-500 shadow-lg rounded-lg' : ''}
+  ${isNES ? 'bg-black/80 border border-gray-400 shadow-lg rounded-lg' : ''}
+`}>
+  <div class="z-10 flex items-center gap-2">
+    <h1 class="text-xl font-bold tracking-wide uppercase site-title md:text-2xl glitch-text" data-text="AVOTECH">
+      <span class={
+        isMatrix ? 'text-green-400' :
+        isCyberpunk ? 'text-pink-500' :
+        'text-white'
+      }>AVOTECH</span>
+    </h1>
+  </div>
+</header>
+
+
+  <!-- Theme Switcher -->
+  <div class="z-10 flex items-center gap-2">
+    <button onclick="switchTheme('nes')" class="px-3 py-2 text-xs border rounded font-mono hover:scale-105 transition-all
+      ${theme === 'nes' ? 'bg-red-600 text-white border-white' : 'bg-white text-black border-gray-600'}">
+      🎮 NES
+    </button>
+    <button onclick="switchTheme('matrix')" class="px-3 py-2 text-xs border rounded font-mono hover:scale-105 transition-all
+      ${theme === 'matrix' ? 'bg-black text-green-400 border-green-600' : 'bg-white text-black border-gray-600'}">
+      💻 Matrix
+    </button>
+    <button onclick="switchTheme('cyberpunk')" class="px-3 py-2 text-xs border rounded font-mono hover:scale-105 transition-all
+      ${theme === 'cyberpunk' ? 'bg-black text-pink-400 border-pink-600' : 'bg-white text-black border-gray-600'}">
+      🧪 Cyberpunk
+    </button>
+  </div>
+</header>

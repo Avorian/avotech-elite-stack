@@ -1,6 +1,171 @@
-:root[data-theme='matrix'] {
-    --bg-color: #000000;
-    --text-color: #00ff00;
-    --accent-color: #00cc66;
+/* === MATRIX THEME CLEAN & MAXED === */
+[data-theme='matrix'] {
+  --font-main: 'Share Tech Mono', monospace;
+  --bg-color: #000;
+  --text-color: #00ff00;
+
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  font-family: var(--font-main);
+}
+
+/* Core Layout */
+[data-theme='matrix'] body,
+[data-theme='matrix'] .site-body,
+[data-theme='matrix'] .main-layout {
+  background-color: #000 !important;
+  color: #00ff00;
+}
+
+#matrix-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  opacity: 0.4;
+  pointer-events: none;
+  z-index: 1; /* 👈 Raise from -10 to 1 */
+  mix-blend-mode: screen;
+}
+
+
+/* Make sure containers render above rain */
+[data-theme='matrix'] header,
+[data-theme='matrix'] .main-layout,
+[data-theme='matrix'] .hero-section,
+[data-theme='matrix'] footer {
+  position: relative;
+  z-index: 1;
+}
+
+/* Glitch Text */
+[data-theme='matrix'] .glitch-text {
+  position: relative;
+  color: #00ff00;
+  text-shadow: 1px 0 #0f0, -1px 0 #0f0, 0 1px #0f0, 0 -1px #0f0;
+}
+
+[data-theme='matrix'] .glitch-text::before,
+[data-theme='matrix'] .glitch-text::after {
+  content: attr(data-text);
+  position: absolute;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  clip: rect(0, 900px, 0, 0);
+  color: #00ff00;
+  z-index: 1;
+}
+
+[data-theme='matrix'] .glitch-text::before {
+  animation: glitch-top 2s infinite linear alternate-reverse;
+}
+[data-theme='matrix'] .glitch-text::after {
+  animation: glitch-bottom 1.5s infinite linear alternate-reverse;
+  color: #00cc00;
+}
+
+@keyframes glitch-top {
+  0% { clip: rect(0, 9999px, 0, 0); }
+  25% { clip: rect(10px, 9999px, 25px, 0); transform: translate(-2px, -2px); }
+  50% { clip: rect(15px, 9999px, 30px, 0); transform: translate(2px, -1px); }
+  100% { clip: rect(0, 9999px, 0, 0); }
+}
+
+@keyframes glitch-bottom {
+  0% { clip: rect(0, 9999px, 0, 0); }
+  25% { clip: rect(35px, 9999px, 50px, 0); transform: translate(-1px, 2px); }
+  50% { clip: rect(45px, 9999px, 60px, 0); transform: translate(1px, 1px); }
+  100% { clip: rect(0, 9999px, 0, 0); }
+}
+
+/* Matrix Glass Panel w/ Glowing Grid */
+[data-theme='matrix'] .matrix-glass {
+  position: relative;
+  z-index: 40;
+  border: 1px solid #00ff00;
+  border-radius: 12px;
+  background-color: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
+  overflow: hidden;
+  box-shadow: 0 0 18px rgba(0, 255, 0, 0.4);
+}
+
+[data-theme='matrix'] .matrix-glass::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background-image:
+    repeating-linear-gradient(
+      0deg,
+      rgba(0, 255, 0, 0.25),
+      rgba(0, 255, 0, 0.25) 1px,
+      transparent 1px,
+      transparent 30px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      rgba(0, 255, 0, 0.25),
+      rgba(0, 255, 0, 0.25) 1px,
+      transparent 1px,
+      transparent 30px
+    );
+  background-size: 100% 100%;
+  animation: matrixGridGlow 10s ease-in-out infinite;
+  opacity: 1;
+  filter: brightness(1) drop-shadow(0 0 4px #00ff00);
+  mix-blend-mode: screen;
+}
+
+@keyframes matrixGridGlow {
+  0% {
+    filter: brightness(0.2) drop-shadow(0 0 1px #00ff00);
+    opacity: 0.1;
   }
-  
+  40% {
+    filter: brightness(2.5) drop-shadow(0 0 6px #00ff00);
+    opacity: 0.6;
+  }
+  80% {
+    filter: brightness(4.5) drop-shadow(0 0 12px #00ff00);
+    opacity: 1;
+  }
+  100% {
+    filter: brightness(0.2) drop-shadow(0 0 1px #00ff00);
+    opacity: 0.1;
+  }
+}
+
+/* Pulse Animation */
+@keyframes pulse-glow {
+  0% { box-shadow: 0 0 4px #00ff00; }
+  50% { box-shadow: 0 0 12px #00ff00, 0 0 24px #00ff00; }
+  100% { box-shadow: 0 0 4px #00ff00; }
+}
+
+[data-theme='matrix'] .animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+/* Tagline: DIFFERENT Animation */
+.matrix-different {
+  display: inline-block;
+  animation: matrixGlow 2s infinite;
+  color: black;
+  padding: 0 0.25rem;
+  font-weight: bold;
+}
+
+@keyframes matrixGlow {
+  0%, 100% {
+    color: black;
+    text-shadow: 0 0 0 rgba(0, 255, 0, 0.8);
+  }
+  50% {
+    color: #00ff00;
+    text-shadow: 0 0 12px #00ff00;
+  }
+}

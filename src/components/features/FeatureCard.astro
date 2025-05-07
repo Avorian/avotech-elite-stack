@@ -1,0 +1,10 @@
+---
+import { getThemeClasses } from '../../utils/themeClassMap.js'; // ✅ correct
+const { title, description, icon, theme } = Astro.props;
+const { bg, text } = getThemeClasses(theme);
+
+---
+<div class={`feature-card w-full min-h-[160px] p-6 rounded-lg transition-all text-left ${bg} ${text}`}>
+  <h3 class="mb-2 text-xl font-semibold">{icon} {title}</h3>
+  <p class="text-sm leading-relaxed">{description}</p>
+</div>

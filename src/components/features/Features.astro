@@ -1,0 +1,37 @@
+---
+import { features } from "./data/features";
+import FeatureCard from "./FeatureCard.astro";
+
+const { theme } = Astro.props;
+
+interface Feature {
+  title: string;
+  icon: string;
+  description: string;
+}
+---
+
+// 🔧 Features.astro – Theme-aware features controller component
+
+
+<section class="features-section py-16 px-4 sm:px-8 lg:px-16">
+  <div class="max-w-6xl mx-auto text-center mb-12">
+    <h2 class="text-3xl sm:text-4xl font-bold tracking-tight">
+      What Makes AvoTech Different
+    </h2>
+    <p class="mt-4 text-lg text-gray-600 dark:text-gray-400">
+      These aren’t just features — they’re principles we build into every project.
+    </p>
+  </div>
+
+  <div class="grid gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+    {features.map((feature) => (
+      <FeatureCard 
+        title={feature.title} 
+        icon={feature.icon} 
+        description={feature.description} 
+        theme={theme} 
+      />
+    ))}
+  </div>
+</section>
