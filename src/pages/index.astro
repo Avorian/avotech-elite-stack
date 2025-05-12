@@ -1,19 +1,17 @@
 ---
-const { theme: propTheme } = Astro.props;
-const isMatrix = propTheme === 'matrix';
-const isNES = propTheme === 'nes';
-const isCyberpunk = propTheme === 'cyberpunk';
+const theme = Astro.cookies.get("theme")?.value || "nes";
 import Layout from '../layouts/Layout.astro'
 import Hero from '../components/HeroSection/Hero.astro'
 import Features from '../components/features/Features.astro'
 import DevCollective from '../components/DevCollective.astro'
 import Projects from '../components/Projects.astro'
 import Contact from '../components/Contact.astro'
-const theme = Astro.cookies.get("theme")?.value || "nes";
 ---
-
-
----
+<section class="p-4 space-y-2 text-center">
+  <p class="font-nes text-white">NES Font — Press Start 2P</p>
+  <p class="font-cyberpunk text-pink-400">Cyberpunk Font — Orbitron</p>
+  <p class="font-matrix text-green-400">Matrix Font — Share Tech Mono</p>
+</section>
 
 <Layout>
   <Hero theme={theme} />

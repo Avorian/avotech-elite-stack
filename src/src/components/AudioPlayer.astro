@@ -1,0 +1,47 @@
+---
+// AudioPlayer.astro (Oracle Synced)
+---
+
+<div id="audio-player" class="fixed z-10 flex flex-col items-end gap-3 top-20 right-6">
+  <!-- Now Playing -->
+  <div
+    id="now-playing"
+    class="hidden w-56 p-2 font-mono text-xs text-white bg-black border border-pink-500 rounded shadow bg-opacity-80"
+  >
+    <p>🎵 Now Playing:</p>
+    <p id="track-title" class="font-bold">Track Title</p>
+    <p id="track-artist" class="italic">by Artist</p>
+    <a
+      id="track-link"
+      href="#"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="text-blue-400 underline hover:text-blue-200"
+    >
+      🎨 Support the Artist
+    </a>
+  </div>
+
+  <!-- Cassette / CD image -->
+  <button id="media-button" class="transition-transform hover:scale-110">
+    <img
+      id="cassette-img"
+      src=""
+      alt="Play Theme Song"
+      class=""
+    />
+  </button>
+
+  <!-- Mute Button -->
+  <button
+    id="mute-toggle"
+    class="px-3 py-1 text-xs font-bold text-white bg-red-800 rounded shadow hover:bg-red-700"
+  >
+    🔊 Sound On
+  </button>
+</div>
+
+<audio id="theme-audio" loop preload="auto" class="hidden">
+  <source src="" type="audio/mpeg" />
+  
+</audio>

@@ -1,0 +1,62 @@
+{
+  "matrix": [
+    {
+      "src": "/assets/matrix/track1.mp3",
+      "title": "Digital Drift",
+      "artist": "XyloSynth",
+      "link": "https://pixabay.com/music/search/digital%20drift/"
+    },
+    {
+      "src": "/assets/matrix/track2.mp3",
+      "title": "PulseNet",
+      "artist": "SynthFlow",
+      "link": "https://pixabay.com/music/search/pulsenet/"
+    },
+    {
+      "src": "/assets/matrix/track3.mp3",
+      "title": "Grid Break",
+      "artist": "CodeReign",
+      "link": "https://pixabay.com/music/search/grid%20break/"
+    }
+  ],
+  "cyberpunk": [
+    {
+      "src": "/assets/cyberpunk/track1.mp3",
+      "title": "Neon Reign",
+      "artist": "ZeroSignal",
+      "link": "https://pixabay.com/music/search/neon%20reign/"
+    },
+    {
+      "src": "/assets/cyberpunk/track2.mp3",
+      "title": "Synth Crusade",
+      "artist": "BladeNoir",
+      "link": "https://pixabay.com/music/search/synth%20crusade/"
+    },
+    {
+      "src": "/assets/cyberpunk/track3.mp3",
+      "title": "Afterlight Drive",
+      "artist": "VaporNight",
+      "link": "https://pixabay.com/music/search/afterlight%20drive/"
+    }
+  ],
+  "nes": [
+    {
+      "src": "/assets/nes/track1.mp3",
+      "title": "Pixel Charge",
+      "artist": "8BitBeats",
+      "link": "https://pixabay.com/music/search/pixel%20charge/"
+    },
+    {
+      "src": "/assets/nes/track2.mp3",
+      "title": "Retro Jump",
+      "artist": "GameWave",
+      "link": "https://pixabay.com/music/search/retro%20jump/"
+    },
+    {
+      "src": "/assets/nes/track3.mp3",
+      "title": "Power-Up Pulse",
+      "artist": "ChiptuneCore",
+      "link": "https://pixabay.com/music/search/power-up%20pulse/"
+    }
+  ]
+}

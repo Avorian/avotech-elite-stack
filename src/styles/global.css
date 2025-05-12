@@ -28,3 +28,27 @@
   z-index: -1 !important;
   position: absolute !important;
 }
+
+/* === FONT OVERRIDE PATCH: Correct theme font mapping === */
+[data-theme='matrix'] {
+  --font-main: "Share Tech Mono", monospace !important;
+}
+
+[data-theme='cyberpunk'] {
+  --font-main: "Orbitron", sans-serif !important;
+}
+/* === Hard override for font rendering === */
+[data-theme='matrix'] .hero-section h1,
+[data-theme='matrix'] .hero-section p {
+  font-family: "Share Tech Mono", monospace !important;
+}
+
+[data-theme='cyberpunk'] .hero-section h1,
+[data-theme='cyberpunk'] .hero-section p {
+  font-family: "Orbitron", sans-serif !important;
+}
+
+[data-theme='nes'] .hero-section h1,
+[data-theme='nes'] .hero-section p {
+  font-family: "Press Start 2P", cursive !important;
+}

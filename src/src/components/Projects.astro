@@ -1,0 +1,74 @@
+---
+const { theme } = Astro.props;
+const isMatrix = theme === 'matrix';
+const isCyberpunk = theme === 'cyberpunk';
+const isNES = theme === 'nes';
+
+const projects = [
+  {
+    title: 'Simon Donaghy Music',
+    description: 'A custom site for a live pianist, featuring rich media and booking tools.',
+    link: 'https://simondonaghy.com',
+  },
+  {
+    title: 'AvoTech Multiverse',
+    description: 'The flagship site for our dev collective, built with Astro + Tailwind.',
+    link: 'https://avorian.com',
+  },
+  {
+    title: 'Dev Collective Portal',
+    description: 'Custom admin dashboard for local tech freelancers. Private repo. Ask for demo.',
+    link: '#',
+  }
+];
+---
+
+<section
+  class={`projects-section relative z-40 my-20 px-4 sm:px-6 lg:px-8
+    ${isMatrix ? 'text-green-300' : ''}
+    ${isCyberpunk ? 'text-pink-300' : ''}
+    ${isNES ? 'text-white' : ''}
+  `}
+>
+  <!-- Title -->
+  <h2
+    class={`projects-title text-3xl sm:text-4xl font-bold text-center mb-12 tracking-wide
+      ${isMatrix ? 'font-[Orbitron] glitch-text' : ''}
+      ${isCyberpunk ? 'neon-glow text-pink-300' : ''}
+      ${isNES ? 'font-["Press_Start_2P"]' : ''}
+    `}
+  >
+    Recent Projects
+  </h2>
+
+  <!-- Grid Wrapper with Pane Background -->
+  <div
+    class={`projects-grid-wrapper p-6 rounded-lg shadow-lg border max-w-7xl mx-auto
+      ${isMatrix ? 'bg-black/60 border-green-500 backdrop-blur-sm shadow-[0_0_10px_#00ff00] matrix-grid' : ''}
+      ${isCyberpunk ? 'bg-[#1a002d]/90 border-pink-500 backdrop-blur-md' : ''}
+      ${isNES ? 'bg-black border-gray-400' : ''}
+    `}
+  >
+    <div class="grid gap-8 projects-grid sm:grid-cols-2 lg:grid-cols-3">
+      {projects.map((project) => (
+        <a
+          href={project.link}
+          target="_blank"
+          rel="noopener noreferrer"
+          class={`project-card group p-4 rounded-lg border transition-transform hover:scale-[1.03] cursor-pointer
+            ${isMatrix ? 'border-green-600 hover:shadow-[0_0_10px_#00ff00]' : ''}
+            ${isCyberpunk ? 'border-pink-600 hover:shadow-[0_0_12px_#ff00aa]' : ''}
+            ${isNES ? 'border-gray-400 bg-gray-900 hover:bg-red-700 hover:text-white' : ''}
+          `}
+        >
+          <h3 class="mb-2 text-xl font-bold project-title group-hover:underline underline-offset-4">
+            {project.title}
+          </h3>
+          <p class="text-sm leading-relaxed project-description opacity-90">
+            {project.description}
+          </p>
+        </a>
+      ))}
+    </div>
+  </div>
+</section>

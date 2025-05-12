@@ -1,0 +1,128 @@
+---
+const { theme } = Astro.props;
+const isMatrix = theme === 'matrix';
+const isCyberpunk = theme === 'cyberpunk';
+const isNES = theme === 'nes';
+
+const devs = [
+  {
+    name: 'Steve Wareham',
+    role: 'Founder • Full Stack Dev',
+    img: '/images/rockstarceo.png',
+    quote: 'I build elite systems for people who want results.',
+  },
+  {
+    name: 'CJ Edenfield',
+    role: 'Frontend Specialist',
+    img: '/images/cj.jpg',
+    quote: 'If it doesn’t feel right, it ain’t right. UX is everything.',
+  },
+  {
+    name: 'Collin Lane',
+    role: 'Backend + Database Architect',
+    img: '/images/collin.jpg',
+    quote: 'My job? Make it fast, make it scale, make it bulletproof.',
+  },
+];
+---
+
+<section
+  class={`dev-collective-section relative z-40 my-24 px-4
+    ${isMatrix ? 'text-green-300' : ''}
+    ${isCyberpunk ? 'text-pink-300' : ''}
+    ${isNES ? 'text-white' : ''}
+  `}
+>
+  <!-- Pane Container -->
+  <div
+    class={`rounded-lg border p-8 max-w-7xl mx-auto shadow-md backdrop-blur-md
+      ${isMatrix ? 'bg-black/60 border-green-500 matrix-grid' : ''}
+      ${isCyberpunk ? 'bg-[#1a002d]/80 border-pink-500' : ''}
+      ${isNES ? 'bg-black border-gray-400' : ''}
+    `}
+  >
+
+    <!-- Title & Theme Switcher -->
+    <div class="flex flex-col items-center justify-center gap-4 mb-6">
+      <h2
+        class={`text-2xl md:text-3xl text-center tracking-wide font-bold
+          ${isMatrix ? 'font-[Orbitron] glitch-text' : ''}
+          ${isCyberpunk ? 'neon-glow text-pink-300' : ''}
+          ${isNES ? 'font-["Press_Start_2P"]' : ''}
+        `}
+      >
+        MEET THE DEV COLLECTIVE
+      </h2>
+
+      <button
+        id="theme-dropdown-toggle"
+        class={`theme-toggle-btn border px-4 py-2 rounded text-sm tracking-wide transition hover:scale-105
+          ${isMatrix ? 'bg-black border-green-500 text-green-300' : ''}
+          ${isCyberpunk ? 'bg-[#2c003f] border-pink-400 text-pink-200' : ''}
+          ${isNES ? 'bg-gray-800 border-white text-white font-["Press_Start_2P"] text-xs' : ''}
+        `}
+        aria-haspopup="true"
+        aria-expanded="false"
+      >
+        🎮 Switch Theme
+      </button>
+
+      <div id="theme-options" class="absolute z-50 flex hidden gap-2 mt-2">
+        <button class="theme-btn" data-theme="nes">NES</button>
+        <button class="theme-btn" data-theme="matrix">Matrix</button>
+        <button class="theme-btn" data-theme="cyberpunk">Cyberpunk</button>
+      </div>
+    </div>
+
+    <!-- Subtitle -->
+    <p class="max-w-2xl mx-auto mb-10 text-sm leading-relaxed tracking-wide text-center md:text-base">
+      AvoTech isn’t just a brand — it’s a <span class="highlight">network of powerhouse developers</span> building smarter together. No egos. Just results.
+    </p>
+
+    <!-- Dev Cards Grid -->
+    <div class="grid gap-8 dev-cards sm:grid-cols-2 lg:grid-cols-3">
+      {devs.map((dev) => (
+        <div
+          class={`dev-card rounded-lg p-6 text-center shadow transition transform hover:scale-105
+            ${isMatrix ? 'bg-black/70 border border-green-500 shadow-[0_0_12px_#00ff00]' : ''}
+            ${isCyberpunk ? 'bg-[#1a002d]/90 border border-pink-400 shadow-[0_0_10px_#ff00aa]' : ''}
+            ${isNES ? 'bg-gray-900 border border-gray-500' : ''}
+          `}
+        >
+          <img src={dev.img} alt={`Photo of ${dev.name}`} class="object-cover w-24 h-24 mx-auto mb-4 border-2 rounded-full dev-img" />
+          <h3 class="text-lg font-semibold">{dev.name}</h3>
+          <p class="mb-2 text-sm italic opacity-80">{dev.role}</p>
+          <p class="text-xs opacity-70">"{dev.quote}"</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<!-- Optional: Move script to external file if needed -->
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const toggle = document.getElementById("theme-dropdown-toggle");
+    const options = document.getElementById("theme-options");
+    const themeLink = document.getElementById("theme-stylesheet");
+
+    toggle?.addEventListener("click", () => {
+      const expanded = toggle.getAttribute("aria-expanded") === "true";
+      toggle.setAttribute("aria-expanded", String(!expanded));
+      options?.classList.toggle("hidden");
+    });
+
+    document.querySelectorAll(".theme-btn").forEach((btn) => {
+      btn.addEventListener("click", (e) => {
+        const target = e.target as HTMLElement;
+        const newTheme = target?.dataset?.theme;
+        if (!newTheme) return;
+        document.documentElement.setAttribute("data-theme", newTheme);
+        localStorage.setItem("selected-theme", newTheme);
+        if (themeLink instanceof HTMLLinkElement) {
+          themeLink.href = `/themes/${newTheme}.css`;
+        }
+      });
+    });
+  });
+</script>

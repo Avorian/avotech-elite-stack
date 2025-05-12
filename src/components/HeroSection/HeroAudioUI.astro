@@ -1,0 +1,44 @@
+---
+const { theme } = Astro.props;
+
+const themeTracks = {
+    matrix: [
+        {
+            src: '/assets/matrix/track1.mp3',
+            title: 'Digital Drift',
+            artist: 'XyloSynth',
+            link: 'https://pixabay.com/music/search/digital%20drift/'
+        }
+    ],
+    cyberpunk: [
+        {
+            src: '/assets/cyberpunk/track1.mp3',
+            title: 'Neon Reign',
+            artist: 'ZeroSignal',
+            link: 'https://pixabay.com/music/search/neon%20reign/'
+        }
+    ],
+    nes: [
+        {
+            src: '/assets/nes/track1.mp3',
+            title: 'Pixel Charge',
+            artist: '8BitBeats',
+            link: 'https://pixabay.com/music/search/pixel%20charge/'
+        }
+    ]
+};
+
+const tracks = themeTracks[theme] || [];
+---
+
+{tracks.length > 0 && (
+<section class="mt-6 text-center">
+	<audio controls autoplay loop class="mx-auto">
+		<source src={tracks[0].src} type="audio/mpeg" />
+		Your browser does not support the audio element.
+	</audio>
+	<p class="text-xs mt-2 text-gray-400">
+		Now playing: <strong>{tracks[0].title}</strong> by <a href={tracks[0].link} target="_blank" class="underline">{tracks[0].artist}</a>
+	</p>
+</section>
+    )}
